@@ -5,13 +5,13 @@
         <th>id</th><th>名前</th><th>レベル</th><th>職業</th>
     </tr>
     <% @players.each do |player| %>
-           <tr>
+        <tr>
             <td><%= player.id %></td>
             <td><%= player.name %></td>
             <td><%= player.level %></td>
-            <td><a href="/job/"><%= player.job.job_name %></a></td>
+            <td><a href="/jobs/<%= player.job.id %>"><%= player.job.job_name %></a></td>
        </tr>
-    <% end %>
+    <% end %>  
 </table>
 
 

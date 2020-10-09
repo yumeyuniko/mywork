@@ -16,8 +16,15 @@ class Job < ActiveRecord::Base
     has_many :players
 end
 
+# get '/' do
+#   ルーティング
+#   @players = Player.all
+#   erb :indexコントローラーのこと
+
+
 get '/' do
   @players = Player.all
+  @jobs = Job.all
   erb :index
 end
 
@@ -29,7 +36,8 @@ get '/new/' do
  #redirectを使うとテンプレート呼び出すかわりに指定したパスに移動することができる
 end
 
-get '/update/:id' do
+#更新するときはput
+put '/update/:id' do
  # このパスでidを指定するとデータを更新できる
  player = Player.find(params['id'])
  player.name = "シナトラ2号"
@@ -37,7 +45,7 @@ get '/update/:id' do
  redirect '/'
 end
 
-get '/destroy/:id' do
+post '/destroy/:id' do
  # このパスでidを指定するとデータを削除できる
  player = Player.find(params['id'])
  player.destroy
@@ -61,7 +69,7 @@ end
 # /job/というパスでidを受け取って、パラメータで指定して該当するレコードを取得、@job変数に代入。
 # job_profile.erbテンプレートを用意して
 # 表示させる
-get '/job/:id' do
+get '/jobs/:id' do
   @job = Job.find(params['id'])
   erb :job_profile
 end
