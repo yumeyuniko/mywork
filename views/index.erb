@@ -1,0 +1,18 @@
+<h1>Players index</h1>
+<div class="balloon-shadow round">次は職業一覧ページを表示させるよ</div>
+<table>
+    <tr>
+        <th>id</th><th>名前</th><th>レベル</th><th>職業</th>
+    </tr>
+    <% @players.each do |player| %>
+           <tr>
+            <td><%= player.id %></td>
+            <td><%= player.name %></td>
+            <td><%= player.level %></td>
+            <td><a href="/job/"><%= player.job.job_name %></a></td>
+       </tr>
+    <% end %>
+</table>
+
+
+

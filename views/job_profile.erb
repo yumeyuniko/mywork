@@ -1,0 +1,12 @@
+<h1><%= @job.id %>:<%= @job.job_name %>の詳細情報</h1>
+<div class="balloon-shadow round"><%= @job.job_name %>に属するplayerが表示されてる</div>
+
+<% @job.players.each do |player| %>
+  <p>
+    <%= player.id %>,
+    <%= player.name %>,
+    <%= player.level %>
+  </p>
+<% end %>
+
+<p><a href ="/jobs/">戻る</a></p>

@@ -1,0 +1,35 @@
+body {
+  padding: 30px;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+.balloon-shadow {
+  position: relative; /* 三角の位置を固定するために設定 */
+  width: 300px; /* 幅 */
+  margin: 0 0 20px;/* 上 左右 下のマージン */
+  padding: 20px; /* ふきだし内の余白 */
+  background: #ddd; /* 背景色 */
+  text-align: center; /* テキストの揃え */
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
+}
+.balloon-shadow::before { /* 三角 */
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    margin-left: -10px;
+    width: 20px; /* 影をつけるために線幅で設定せずにboxを使用する */
+    height: 20px;
+    transform: rotate(45deg); /* 回転 */
+    background: #ddd; /* 吹き出しの地と同じ色 */
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
+}
+.round {
+  border-radius: 8px;
+}
+
+

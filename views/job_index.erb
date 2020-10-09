@@ -1,0 +1,18 @@
+<h1>Jobs Index</h1>
+<div class="balloon-shadow round">表示するボタンで、
+それぞれの<br>職業に属するplayerが表示される</div>
+<table>
+    <tr>
+        <th>id</th><th>職業</th>
+    </tr>
+    
+    <% @jobs.each do |job| %>
+        <tr>
+            <td><%= job.id %></td>
+            <td><%= job.job_name %></td>
+            <td><a href="/job/<%= job.id %>">表示する</a></td>
+        </tr>
+    <% end %>
+</table>
+
+

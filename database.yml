@@ -1,0 +1,9 @@
+development:
+  #開発用のDBを指定
+  # 設定情報の階層構造を左インデントで表示
+  adapter: mysql2
+  database: mydb
+  host: localhost
+  username: root
+  password:
+  encoding: utf8
