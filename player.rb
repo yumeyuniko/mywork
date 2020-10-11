@@ -34,18 +34,34 @@ get '/new/' do
  Player.create(:name => "山田", :level => 1, :job_id => 4)
  redirect '/'
  #redirectを使うとテンプレート呼び出すかわりに指定したパスに移動することができる
+#  erb :new
 end
 
 #更新するときはput
 put '/update/:id' do
  # このパスでidを指定するとデータを更新できる
  player = Player.find(params['id'])
- player.name = "シナトラ2号"
+ player.name 
  player.save
  redirect '/'
 end
 
-post '/destroy/:id' do
+
+get '/edit/:id' do
+  @player = Player.find(params[:id])
+  erb :edit
+end
+
+
+
+
+
+
+
+
+
+
+delete '/destroy/:id' do
  # このパスでidを指定するとデータを削除できる
  player = Player.find(params['id'])
  player.destroy
