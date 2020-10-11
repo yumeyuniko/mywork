@@ -7,7 +7,7 @@
     <% @players.each do |player| %>
         <tr>
             <td><%= player.id %></td>
-            <td><%= player.name %></td>
+            <td><a href="/update/<%= player.id %>"><%= player.name %></a></td>
             <td><%= player.level %></td>
             <td><a href="/jobs/<%= player.job.id %>"><%= player.job.job_name %></a></td>
        </tr>

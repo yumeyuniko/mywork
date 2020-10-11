@@ -44,11 +44,10 @@ patch '/update/:id' do
   player = Player.find(params[:id])
   if player.update(params)
     # flash[:notice] = '更新しました'
-    return redirect_to '/'
+    return redirect '/'
   end
-
   #  flash[:alert] = '更新失敗しました'
-  render :edit
+  erb :edit
 end
 
 get '/edit/:id' do
