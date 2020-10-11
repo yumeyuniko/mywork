@@ -37,29 +37,25 @@ get '/new/' do
 #  erb :new
 end
 
-#更新するときはput
-put '/update/:id' do
- # このパスでidを指定するとデータを更新できる
- player = Player.find(params['id'])
- player.name 
- player.save
- redirect '/'
-end
+#更新するときはpatch
+# 参考：https://qiita.com/suin/items/d17bdfc8dba086d36115
+patch '/update/:id' do
+  # このパスでidを指定するとデータを更新できる
+  player = Player.find(params[:id])
+  if player.update(params)
+    # flash[:notice] = '更新しました'
+    return redirect_to '/'
+  end
 
+  #  flash[:alert] = '更新失敗しました'
+  render :edit
+end
 
 get '/edit/:id' do
   @player = Player.find(params[:id])
+  @jobs = Job.all
   erb :edit
 end
-
-
-
-
-
-
-
-
-
 
 delete '/destroy/:id' do
  # このパスでidを指定するとデータを削除できる
@@ -68,7 +64,7 @@ delete '/destroy/:id' do
  redirect '/'
 end
 
-get '/show/:id' do 
+get '/show/:id' do
  @player = Player.find(params['id'])
  erb :profile
  # 表示のためにprofile.erbファイルを呼び出している
@@ -79,8 +75,6 @@ get '/jobs/' do
   erb :job_index
 end
 
-
-
 # ↓以下がjob詳細ページを表示するコード
 # /job/というパスでidを受け取って、パラメータで指定して該当するレコードを取得、@job変数に代入。
 # job_profile.erbテンプレートを用意して
@@ -89,6 +83,3 @@ get '/jobs/:id' do
   @job = Job.find(params['id'])
   erb :job_profile
 end
-
-
-
