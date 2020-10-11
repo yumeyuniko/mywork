@@ -1,0 +1,25 @@
+<h1>プレイヤー<%= @player.id %>を編集</h1>
+
+<form action="/update/<%= @player.id %>" method="post">
+    <label for="title">ID</label><br>
+    <%= @player.id %>
+    <p></p>
+    <label for="content">名前</label><br>
+    <input type="text" name="title" value="<%= @player.name %>">
+    <p></p>
+
+    <label for="content">レベル</label><br>
+    <input type="text" name="title" value="<%= @player.level %>">
+    <p></p>
+
+     <label for="content">職業</label><br>
+    <input type="text" name="title" value="<%= @job_id %>">
+
+
+    <p></p>
+    <p></p>
+
+    <button type="submit">保存する</button>
+    <a href='/show/<%= @player %>'>キャンセル</a>
+</form>
+
