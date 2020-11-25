@@ -29,7 +29,7 @@ get '/' do
 end
 
 
-get '/new/' do
+get '/plyers/new/' do
  # このパスでidを指定するとデータを追加できる
  Player.create(:name => "山田", :level => 1, :job_id => 4)
  redirect '/'
@@ -39,7 +39,8 @@ end
 
 #更新するときはpatch
 # 参考：https://qiita.com/suin/items/d17bdfc8dba086d36115
-patch '/update/:id' do
+post '/plyers/:id' do
+  # params = { id: ,name: , level: , job_id: }
   # このパスでidを指定するとデータを更新できる
   player = Player.find(params[:id])
   if player.update(params)
@@ -50,21 +51,54 @@ patch '/update/:id' do
   erb :edit
 end
 
-get '/edit/:id' do
+players
+resouces :players
+post players
+put players/:id
+delete players/:id
+
+deleted_plyers/:id
+
+posts/:post_id/commets/:id
+commets/
+questios/:/commet
+
+# restful DHH
+
+# cotroller
+@post = Post.icludes(:commets).find(1)
+
+# erb
+@post.commets.ech do |commet|
+  # select form commets where id = 
+  comet.text
+ed
+
+web server => db server
+mysql.strt
+
+get 'plyers/edit/:id' do
   @player = Player.find(params[:id])
   @jobs = Job.all
   erb :edit
 end
 
-delete '/destroy/:id' do
+post '/plyers/:id' do
+  player = Player.find(params[:id])
+  player.save
+  redirect "/show/#{params[:id]}"
+  erb :show
+end
+
+delete '/plyer/:id' do
  # このパスでidを指定するとデータを削除できる
- player = Player.find(params['id'])
+ player = Player.find(params[:id])
  player.destroy
  redirect '/'
 end
 
-get '/show/:id' do
- @player = Player.find(params['id'])
+get '/plyers/:id' do
+ @player = Player.find(params[:id])
  erb :profile
  # 表示のためにprofile.erbファイルを呼び出している
 end
@@ -79,6 +113,6 @@ end
 # job_profile.erbテンプレートを用意して
 # 表示させる
 get '/jobs/:id' do
-  @job = Job.find(params['id'])
+  @job = Job.find(params[:id])
   erb :job_profile
 end
